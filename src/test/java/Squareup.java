@@ -28,28 +28,25 @@ public class Squareup{
     public void testSearch() {
         MainPage mainPage = new MainPage(this.driver);
         
-        Assert.assertTrue(mainPage.staticPage().contains("Get paid fast from anywhere."));
-        LoginPage loginPage = mainPage.openLogin("tenefe9714@yehudabx.com");
-        
-        // DashboardPage dashboardPage = loginPage.login("jarifi4728@684hh.com","jarifi4728");
-        DashboardPage dashboardPage = loginPage.login("tenefe9714@yehudabx.com", "hellohowareyou");
-        
-        // System.out.println(dashboardPage.getMainCardTitle());
-        // System.out.println(dashboardPage.getDashboardMessageTitle());
-        // Assert.assertTrue(dashboardPage.getMainCardTitle().contains("Start by creating your first Doodle"));
+        Newsletter newsletter = mainPage.suscribe();
 
-        Assert.assertTrue(dashboardPage.getDashboardMessageTitle().contains("Welcome back"));
-        Assert.assertTrue(dashboardPage.getDashboardToday().contains("Today"));
-        
-        
+        MainPage backhome = newsletter.subscription("nical", "dghetian", "nical40577@dghetian.com", "TechCorp", "Ecuador");
 
-        
-        
+        LoginPage loginPage = mainPage.openLogin();
+    
+        DashboardPage dashboardPage = loginPage.login("nical40577", "iamanightlover");
 
+        Assert.assertTrue(dashboardPage.getDashboardMessageTitle().contains("My Exams"));
+        Assert.assertTrue(dashboardPage.getDashboardToday().contains("You have no assigned exam vouchers"));
+
+        profilePage ppage = dashboardPage.profile();
+
+        profilePage editprofile = ppage.allowEdit();
+
+        DashboardPage saveProfile = ppage.saveProfile("9946789", "m2mefhg");
+
+        MainPage logout = dashboardPage.openLogout();
         
-        
-        
-        // Assert.assertTrue(logoutPage.getLogoutMessageTitle().contains("You are signed out."));
     }
     
 
@@ -61,4 +58,4 @@ public class Squareup{
         }
     }
 }
-// tenefe9714@yehudabx.com hellohowareyou
+// nical40577@dghetian.com iamanightlover

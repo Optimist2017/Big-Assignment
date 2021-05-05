@@ -14,8 +14,8 @@ import org.openqa.selenium.NoSuchElementException;
 
 class LoginPage extends PageBase {
 
-    private By nameInputBoxBy = By.name("email");
-    private By passwordInputBoxBy = By.name("password");
+    private By nameInputBoxBy = By.name("c_Username");
+    private By passwordInputBoxBy = By.name("c_Password");
 
     public LoginPage(WebDriver driver) {
         super(driver);

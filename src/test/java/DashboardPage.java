@@ -15,14 +15,10 @@ import org.openqa.selenium.NoSuchElementException;
 
 class DashboardPage extends PageBase {
 
-    // private By mainCardBy = By.xpath("//div[@class='Card-content']/div/div/h2/span");
-
-    private By dashboardMessage = By.xpath("//div[@id='dashboard-container']/div/div/div[2]/div[2]/div/div/div/div/div/div/div/h2");
-
-    private By dashboardToday = By.xpath("//div[@id='dashboard-container']/div/div/div[2]/div[2]/div/div/div/div/div/h3");
-    private By logoutMenuButtonBy = By.xpath("//div/div/div/div/div/div[@id='ember83']/div/button");
-    private By logoutClickButtonBy = By.xpath("//*[@id='ember79']");
-    private By showLogout = By.xpath("//div/div/div/div/div[@id='ember70']/div/button");
+    private By dashboardMessage = By.xpath("//*[@id='ctl19_c_RegisterVoucher_c_MyExamsLbl']");
+    private By dashboardToday = By.xpath("//*[@id='ctl19_c_RegisterVoucher_c_NoExamsTitle']");
+    private By logoutMenuButtonBy = By.xpath("//*[@id='c_Banner_c_LogoffBtn_c_BannerBtn']");
+    private By profileBtn = By.xpath("//*[@id='c_Banner_c_MyProfileBtn_c_BannerBtn']");
 
 
     public DashboardPage(WebDriver driver) {
@@ -30,23 +26,21 @@ class DashboardPage extends PageBase {
     }    
 
     public String getDashboardMessageTitle(){
-        // System.out.println(this.waitAndReturnElement(dashboardMessage).getText());
         return this.waitAndReturnElement(dashboardMessage).getText();
     }
 
     public String getDashboardToday(){
-        
-        // System.out.println(this.waitAndReturnElement(logoutClickButtonBy));
         return this.waitAndReturnElement(dashboardToday).getText();
     }
 
-    
+    public profilePage profile(){
+        this.waitAndReturnElement(profileBtn).click();
+        return new profilePage(this.driver);
+    }
 
-    public Logout openLogout() {
-        
-        // this.waitAndReturnElement(logoutMenuButtonBy).click();
-        // this.waitAndReturnElement(logoutClickButtonBy).click();
-        return new Logout(this.driver);
+    public MainPage openLogout() {
+        this.waitAndReturnElement(logoutMenuButtonBy).click();
+        return new MainPage(this.driver);
     }
 }
 // tenefe9714@yehudabx.com  hellohowareyou
